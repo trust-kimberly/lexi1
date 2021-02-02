@@ -1,0 +1,115 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+/* fixed links */
+
+nav {
+  position: fixed;
+  display: grid;
+  top: 0;
+  z-index: 1;
+  margin: 2.5vh 1.5vw;
+  font-size: 16px;
+  color: black;
+  grid-template-rows: auto;
+  grid-template-columns: 48.5vw 48.5vw;
+  grid-template-areas: 
+  "left right";
+}
+
+.nav-left {
+  grid-area: left;
+}
+
+.nav-right {
+  grid-area: right;
+  text-align: end;
+}
+
+footer {
+  position: fixed;
+  display: grid;
+  top: 0;
+  z-index: 1;
+  margin: 95vh 1.5vw 2.5vh;
+  font-size: 16px;
+  color: black;
+  grid-template-rows: 2.5vh;
+  grid-template-columns: 48.5vw 48.5vw;
+  grid-template-areas: 
+  "left right";
+}
+
+.ft-left {
+  grid-area: left;
+}
+
+.ft-right {
+  grid-area: right;
+  text-align: right;
+}
+
+a {
+  color: black;
+}
+
+a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+/* carousel */
+
+.container {
+  padding: 0;
+  margin: 0;
+}
+
+.carousel {
+  margin: 2.5vh 0;
+}
+
+.carousel-inner {
+  display: flex;
+  justify-content: center;
+}
+
+.carousel-inner > .item > img {
+  height: 95vh;
+}
+
+.carousel-control.left,
+.carousel-control.right {
+  background-image: none;
+}
+
+.cursor-icons {
+  display: none;
+}
+
+.carousel-control {
+  width: 50%;
+}
+
+.carousel .right:hover {
+  cursor: e-resize;
+}
+
+.carousel .left:hover {
+  cursor: w-resize;
+}
+
+/* info styling */
+
+.info-container {
+  margin: 7vh 1.5vw;
+  font-size: 16px;
+  color: black;
+  margin-block-end: 0;
+}
+
+p.info {
+  margin-bottom: 0;
+}
