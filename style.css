@@ -60,7 +60,7 @@ a:hover {
   text-decoration: none;
 }
 
-/* carousel */
+/* bootstrap carousel */
 
 .container {
   padding: 0;
@@ -68,16 +68,27 @@ a:hover {
 }
 
 .carousel {
-  margin: 2.5vh 0;
+  margin: 6vh 0;
+  height: 88vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .carousel-inner {
+  margin: 0 1.5vw;
   display: flex;
+  max-height: 88vh;
+  max-width: 97vw;
   justify-content: center;
+
 }
 
 .carousel-inner > .item > img {
-  height: 95vh;
+  height: auto;
+  max-height: 88vh;
+  width: auto;
+  max-width: 97vw;
 }
 
 .carousel-control.left,
