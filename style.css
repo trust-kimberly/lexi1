@@ -124,3 +124,7 @@ a:hover {
 p.info {
   margin-bottom: 0;
 }
+
+p.smaller {
+  font-size: 12px;
+}
