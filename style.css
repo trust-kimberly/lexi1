@@ -68,8 +68,8 @@ a:hover {
 }
 
 .carousel {
-  margin: 6vh 0;
-  height: 88vh;
+  margin: 7vh 0;
+  height: 86vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -78,7 +78,7 @@ a:hover {
 .carousel-inner {
   margin: 0 1.5vw;
   display: flex;
-  max-height: 88vh;
+  max-height: 86vh;
   max-width: 97vw;
   justify-content: center;
 
@@ -86,7 +86,7 @@ a:hover {
 
 .carousel-inner > .item > img {
   height: auto;
-  max-height: 88vh;
+  max-height: 86vh;
   width: auto;
   max-width: 97vw;
 }
