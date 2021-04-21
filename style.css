@@ -112,10 +112,30 @@ a:hover {
   cursor: w-resize;
 }
 
+/* projects page text  */
+
+.title-container {
+  width: 100vw;
+  text-align: center;
+  top: 0;
+}
+
+.first-title {
+  position: absolute;
+}
+
+h1.proj-title {
+  font-size: 16px;
+}
+
+.carousel-next {
+  margin: 3vh 0 7vh;
+}
+
 /* info styling */
 
 .info-container {
-  margin: 7vh 1.5vw;
+  margin: 7vh 6vw;
   font-size: 16px;
   color: black;
   margin-block-end: 0;
