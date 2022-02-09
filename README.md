@@ -2,6 +2,4 @@
 
 This is for Lexi: photographer, seamstress, and Chiweenie parent.
 
-WIP
-
-https://trust-kimberly.github.io/lexi1/
+[lexiwimberly.com](https://lexiwimberly.com/)
