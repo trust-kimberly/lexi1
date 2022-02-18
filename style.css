@@ -85,9 +85,9 @@ a:hover {
 }
 
 .carousel-inner > .item > img {
-  height: auto;
+  height: inherit;
   max-height: 86vh;
-  width: auto;
+  width: inherit;
   max-width: 97vw;
 }
 
