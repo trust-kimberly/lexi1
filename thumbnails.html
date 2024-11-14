@@ -54,7 +54,7 @@
 
             // Get unique tags from images
             const tags = new Set();
-            carouselImages.images.forEach(image => {
+            images.forEach(image => {
                 if (image.tags) {
                     image.tags.forEach(tag => tag !== "landing" && tags.add(tag));
                 }
@@ -75,7 +75,7 @@
                 // Clear existing images
                 grid.innerHTML = '';
                 
-                let imagesToShow = carouselImages.images.filter(image => {
+                let imagesToShow = images.filter(image => {
                     if (filter === 'all') return true;
                     return image.tags && image.tags.includes(filter);
                 });

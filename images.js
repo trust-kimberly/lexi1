@@ -1,5 +1,4 @@
-const carouselImages = {
-  images: [
+const images = [
     { src: "media/baby_window.jpg", tags: ["landing"] },
     { src: "media/Project_Las Vegas/161008_VegasProject_LLV_01.jpg", tags: ["landing"], active: true },
     { src: "media/220412_UrbanFarmsLA_0245.jpg", tags: ["landing"] },
@@ -29,4 +28,3 @@ const carouselImages = {
     { src: "media/Project_Las Vegas/161010_LasVegas_605.jpg", tags: ["vegas", "landscapes"] },
     { src: "media/Project_Las Vegas/160813_VegasProject_Chapel3362_01.jpg", tags: ["vegas"]  }
   ]
-};
