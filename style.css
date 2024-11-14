@@ -118,6 +118,7 @@ a:hover {
   width: 100vw;
   text-align: center;
   top: 0;
+  margin-top: 2.5vh;
 }
 
 .first-title {
@@ -126,6 +127,9 @@ a:hover {
 
 h1.proj-title {
   font-size: 16px;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
 }
 
 .carousel-next {
@@ -153,6 +157,7 @@ nav a, footer a {
     text-decoration: none;
     color: #000000;
     transition: all 0.2s ease;
+    font-weight: 400;
 }
 
 nav a:hover, footer a:hover {
