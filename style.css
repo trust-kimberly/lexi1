@@ -81,14 +81,14 @@ a:hover {
   max-height: 86vh;
   max-width: 97vw;
   justify-content: center;
-
 }
 
 .carousel-inner > .item > img {
-  height: inherit;
   max-height: 86vh;
-  width: inherit;
   max-width: 97vw;
+  width: auto; /* Allow natural width */
+  height: auto; /* Allow natural height */
+  object-fit: contain;
 }
 
 .carousel-control.left,
@@ -147,4 +147,87 @@ p.info {
 
 p.smaller {
   font-size: 12px;
+}
+
+nav a, footer a {
+    text-decoration: none;
+    color: #000000;
+    transition: all 0.2s ease;
+}
+
+nav a:hover, footer a:hover {
+    color: #D4A3E8;
+    opacity: 1;
+    text-decoration: none;
+}
+
+/* Keep existing styles but update any conflicting link styles */
+.nav-left a {
+    text-decoration: none;
+    color: #000000;
+    transition: all 0.2s ease;
+}
+
+.nav-right a {
+    text-decoration: none;
+    color: #000000;
+    transition: all 0.2s ease;
+}
+
+.ft-left a {
+    text-decoration: none;
+    color: #000000;
+    transition: all 0.2s ease;
+}
+
+.ft-right a {
+    text-decoration: none;
+    color: #000000;
+    transition: all 0.2s ease;
+}
+
+/* Update footer styles with better mobile handling */
+footer {
+    position: fixed;
+    display: grid;
+    top: 0;
+    z-index: 1;
+    margin: 95vh 1.5vw 2.5vh;
+    font-size: 16px;
+    color: black;
+    grid-template-rows: 2.5vh;
+    grid-template-columns: 48.5vw 48.5vw;
+    grid-template-areas: 
+    "left right";
+}
+
+@media (max-width: 768px) {
+    footer {
+        position: fixed;
+        bottom: 0;
+        top: auto;
+        margin: 0 1.5vw;
+        padding: 10px 0;
+        z-index: 1000;
+        width: 97vw;
+        grid-template-columns: 40vw 57vw;
+    }
+
+    .ft-right {
+        white-space: nowrap; /* Prevent text wrapping */
+        font-size: 16px; /* Slightly smaller text on mobile if needed */
+    }
+
+    /* Adjust the main content to not be hidden by footer */
+    .gallery-container, 
+    .carousel,
+    .info-container {
+        margin-bottom: 50px;
+    }
+
+    .carousel-inner > .item > img {
+        max-height: 80vh; /* Slightly smaller on mobile */
+        width: auto;
+        height: auto;
+    }
 }

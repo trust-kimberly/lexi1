@@ -110,4 +110,82 @@
     }
 }
 
-/* Removed the single column layout for smallest screens to maintain 2 columns */ 
+/* Removed the single column layout for smallest screens to maintain 2 columns */
+
+.filter-container {
+    text-align: center;
+    padding: 0;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 20px;
+    z-index: 90;
+}
+
+.filter-container::before {
+    left: -20px;
+    background: linear-gradient(to right, white, transparent);
+}
+
+.filter-container::after {
+    right: -20px;
+    background: linear-gradient(to left, white, transparent);
+}
+
+.filter-btn {
+    background: none;
+    border: none;
+    padding: 5px 5px;
+    margin: 0 3px;
+    cursor: pointer;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    color: #000000; 
+    font-weight: 400;
+    transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+    opacity: 0.6;
+    color: #D4A3E8;
+}
+
+.filter-btn.active {
+    color: #D4A3E8;
+}
+
+/* Add mobile breakpoint for filter container */
+@media (max-width: 768px) {
+    .filter-container {
+        position: fixed;
+        left: 0;
+        right: 0;
+        transform: none;
+        top: 50px; /* Position below the header */
+        padding: 10px 0;
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Adjust gallery container margin to account for new filter position */
+    .gallery-container {
+        padding: 0;
+        margin-top: 100px; /* Increased to account for filters */
+    }
+
+    /* Add horizontal scrolling indicators */
+    .filter-container::before,
+    .filter-container::after {
+        content: '';
+        position: fixed;
+        top: 60px;
+        bottom: auto;
+        height: 40px;
+        width: 20px;
+        pointer-events: none;
+        z-index: 91;
+    }
+}
+ 
