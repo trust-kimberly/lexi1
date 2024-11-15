@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="thumbnails.css">
+    <script src="images.js"></script>
+    <title>Gallery - Lexi Wimberly</title>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <a href="/">Lexi Wimberly</a>
+        </div>
+        <div class="nav-right">
+            <a href="info.html">Info</a>    
+        </div>
+    </nav>
+
+    <div class="filter-container" id="filter-container">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <!-- Other filter buttons will be dynamically inserted here -->
+    </div>
+
+    <div class="gallery-container">
+        <div class="gallery-grid" id="gallery-grid">
+            <!-- Images will be inserted here via JavaScript -->
+        </div>
+    </div>
+
+    <div class="modal" id="imageModal">
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="">
+        </div>
+    </div>
+
+    <footer>
+        <div class="ft-left">
+            <a href="design.html">Projects</a> 
+        </div>
+        <div class="ft-right">
+            <a href="thumbnails.html">Thumbnails</a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const grid = document.getElementById('gallery-grid');
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const filterContainer = document.getElementById('filter-container');
+
+            // Get unique tags from images
+            const tags = new Set();
+            images.forEach(image => {
+                if (image.tags) {
+                    image.tags.forEach(tag => tag !== "landing" && tags.add(tag));
+                }
+            });
+
+            // Create filter buttons for each tag
+            tags.forEach(tag => {
+                const button = document.createElement('button');
+                button.className = 'filter-btn';
+                button.setAttribute('data-filter', tag);
+                button.textContent = tag.split(' ')
+                    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                    .join(' ');
+                filterContainer.appendChild(button);
+            });
+
+            const filterBtns = document.querySelectorAll('.filter-btn');
+
+            function displayImages(filter = 'all') {
+                // Clear existing images
+                grid.innerHTML = '';
+                
+                let imagesToShow = images.filter(image => {
+                    if (filter === 'all') return true;
+                    return image.tags && image.tags.includes(filter);
+                });
+
+                // Update URL with the current filter
+                const url = new URL(window.location);
+                if (filter === 'all') {
+                    url.searchParams.delete('filter');
+                } else {
+                    url.searchParams.set('filter', filter);
+                }
+                window.history.pushState({}, '', url);
+
+                // Update active button state
+                filterBtns.forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.getAttribute('data-filter') === filter) {
+                        btn.classList.add('active');
+                    }
+                });
+
+                // Create thumbnail grid
+                imagesToShow.forEach(image => {
+                    const imgContainer = document.createElement('div');
+                    imgContainer.className = 'gallery-item';
+                    
+                    const img = document.createElement('img');
+                    img.src = image.src;
+                    img.alt = '';
+                    
+                    imgContainer.appendChild(img);
+                    grid.appendChild(imgContainer);
+
+                    // Add click handler
+                    imgContainer.addEventListener('click', () => {
+                        modal.style.display = 'flex';
+                        modalImg.src = image.src;
+                        document.body.style.overflow = 'hidden';
+                    });
+                });
+            }
+
+            // Check URL params on load
+            const urlParams = new URLSearchParams(window.location.search);
+            const initialFilter = urlParams.get('filter') || 'all';
+
+            // Filter button click handlers
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    displayImages(btn.dataset.filter);
+                });
+            });
+
+            // Close modal handlers
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+            
+            function closeModal() {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+
+            // Close on escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeModal();
+            });
+
+            // Initial load - show filtered images based on URL param
+            displayImages(initialFilter);
+        });
+    </script>
+</body>
+</html> 
