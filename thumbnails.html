@@ -114,15 +114,8 @@
                     
                     const img = document.createElement('img');
                     img.src = image.src;
-                    img.alt = image.caption || '';
                     
-                    // Create caption element for hover
-                    const hoverCaption = document.createElement('div');
-                    hoverCaption.className = 'hover-caption';
-                    hoverCaption.textContent = image.caption || '';
-                    
-                    imgContainer.appendChild(img);
-                    imgContainer.appendChild(hoverCaption);
+                    imgContainer.appendChild(img)
                     grid.appendChild(imgContainer);
 
                     // Update click handler
@@ -136,15 +129,7 @@
             function openModal(image) {
                 modal.style.display = 'flex';
                 modalImg.src = image.src;
-                
-                let modalCaption = document.querySelector('.modal-caption');
-                if (!modalCaption) {
-                    modalCaption = document.createElement('div');
-                    modalCaption.className = 'modal-caption';
-                    document.querySelector('.modal-content').appendChild(modalCaption);
-                }
-                modalCaption.textContent = image.caption || '';
-                
+            
                 document.body.style.overflow = 'hidden';
             }
 
