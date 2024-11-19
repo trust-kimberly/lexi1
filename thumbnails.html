@@ -52,6 +52,11 @@
             const modalImg = document.getElementById('modalImage');
             const filterContainer = document.getElementById('filter-container');
 
+            const modalPrev = document.getElementById('modalPrev');
+            const modalNext = document.getElementById('modalNext');
+            let currentImageIndex = 0;
+            let currentFilteredImages = [];
+
             // Get unique tags from images
             const tags = new Set();
             images.forEach(image => {
@@ -99,25 +104,48 @@
                     }
                 });
 
+                // Update the filtered images array
+                currentFilteredImages = imagesToShow;
+
                 // Create thumbnail grid
-                imagesToShow.forEach(image => {
+                imagesToShow.forEach((image, index) => {
                     const imgContainer = document.createElement('div');
                     imgContainer.className = 'gallery-item';
                     
                     const img = document.createElement('img');
                     img.src = image.src;
-                    img.alt = '';
+                    img.alt = image.caption || '';
+                    
+                    // Create caption element for hover
+                    const hoverCaption = document.createElement('div');
+                    hoverCaption.className = 'hover-caption';
+                    hoverCaption.textContent = image.caption || '';
                     
                     imgContainer.appendChild(img);
+                    imgContainer.appendChild(hoverCaption);
                     grid.appendChild(imgContainer);
 
-                    // Add click handler
+                    // Update click handler
                     imgContainer.addEventListener('click', () => {
-                        modal.style.display = 'flex';
-                        modalImg.src = image.src;
-                        document.body.style.overflow = 'hidden';
+                        currentImageIndex = index;
+                        openModal(image);
                     });
                 });
+            }
+
+            function openModal(image) {
+                modal.style.display = 'flex';
+                modalImg.src = image.src;
+                
+                let modalCaption = document.querySelector('.modal-caption');
+                if (!modalCaption) {
+                    modalCaption = document.createElement('div');
+                    modalCaption.className = 'modal-caption';
+                    document.querySelector('.modal-content').appendChild(modalCaption);
+                }
+                modalCaption.textContent = image.caption || '';
+                
+                document.body.style.overflow = 'hidden';
             }
 
             // Check URL params on load
@@ -130,20 +158,44 @@
                     displayImages(btn.dataset.filter);
                 });
             });
-
             // Close modal handlers
             modal.addEventListener('click', (e) => {
                 if (e.target === modal) closeModal();
             });
-            
+
+            // Add navigation handlers
+            const leftHalf = document.createElement('div');
+            leftHalf.className = 'modal-click-zone left';
+            const rightHalf = document.createElement('div');
+            rightHalf.className = 'modal-click-zone right';
+            document.querySelector('.modal-content').appendChild(leftHalf);
+            document.querySelector('.modal-content').appendChild(rightHalf);
+
+            leftHalf.addEventListener('click', (e) => {
+                e.stopPropagation();
+                currentImageIndex = (currentImageIndex - 1 + currentFilteredImages.length) % currentFilteredImages.length;
+                openModal(currentFilteredImages[currentImageIndex]);
+            });
+
+            rightHalf.addEventListener('click', (e) => {
+                e.stopPropagation();
+                currentImageIndex = (currentImageIndex + 1) % currentFilteredImages.length;
+                openModal(currentFilteredImages[currentImageIndex]);
+            });
+
+            //Close modal
             function closeModal() {
                 modal.style.display = 'none';
                 document.body.style.overflow = 'auto';
             }
 
-            // Close on escape key
+            // Add keyboard navigation
             document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') closeModal();
+                if (modal.style.display === 'flex') {
+                    if (e.key === 'ArrowLeft') leftHalf.click();
+                    if (e.key === 'ArrowRight') rightHalf.click();
+                    if (e.key === 'Escape') closeModal();
+                }
             });
 
             // Initial load - show filtered images based on URL param
