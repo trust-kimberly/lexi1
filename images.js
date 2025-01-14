@@ -25,7 +25,7 @@ const images = [
     { src: "media/Library_5_web.jpg", tags: ["interiors"] },
     { src: "media/240528_TwoBunch_1013.jpg", tags: ["landing"] },
     { src: "media/20230723_GW_Effie_0270.jpg", tags: ["landing", "interiors"] },
-    { src: "media/Project_Las Vegas/161007_VegasProject_StAnne4409_01.jpg"gi},
+    { src: "media/Project_Las Vegas/161007_VegasProject_StAnne4409_01.jpg"},
     { src: "media/Project_Las Vegas/161008_VegasProject_LLV_02.jpg"},
     { src: "media/Project_Las Vegas/161009_LasVegas_087-1.jpg", tags: ["living"]  },
     { src: "media/Project_Las Vegas/161007_StAnne4333_01.jpg"},
