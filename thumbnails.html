@@ -87,6 +87,43 @@
                     return image.tags && image.tags.includes(filter);
                 });
 
+                // Sort images based on filter
+                if (filter !== 'all') {
+                    // Create a custom sort order for specific tags
+                    const sortOrders = {
+                        'interiors/Exteriors': [
+                            "media/240528_TwoBunch_1350.jpg",
+                            "media/220718_Sequoia_204-1.jpeg",
+                            "media/240528_TwoBunch_089.jpg",
+                            
+                            // Add more image paths in your desired order
+                        ],
+                        'portrait': [
+                            "media/Lizzy2.jpeg",
+                            "media/221015_KaitCulmo_033.jpg",
+                            // Add more image paths in your desired order
+                        ],
+                        // Add more tags and their custom orders as needed
+                    };
+
+                    if (sortOrders[filter]) {
+                        imagesToShow.sort((a, b) => {
+                            const indexA = sortOrders[filter].indexOf(a.src);
+                            const indexB = sortOrders[filter].indexOf(b.src);
+                            
+                            // If both images are in the sort order, use that order
+                            if (indexA !== -1 && indexB !== -1) {
+                                return indexA - indexB;
+                            }
+                            // If only one image is in the sort order, prioritize it
+                            if (indexA !== -1) return -1;
+                            if (indexB !== -1) return 1;
+                            // For images not in the sort order, keep their original order
+                            return 0;
+                        });
+                    }
+                }
+
                 // Update URL with the current filter
                 const url = new URL(window.location);
                 if (filter === 'all') {
@@ -114,15 +151,8 @@
                     
                     const img = document.createElement('img');
                     img.src = image.src;
-                    img.alt = image.caption || '';
                     
-                    // Create caption element for hover
-                    const hoverCaption = document.createElement('div');
-                    hoverCaption.className = 'hover-caption';
-                    hoverCaption.textContent = image.caption || '';
-                    
-                    imgContainer.appendChild(img);
-                    imgContainer.appendChild(hoverCaption);
+                    imgContainer.appendChild(img)
                     grid.appendChild(imgContainer);
 
                     // Update click handler
@@ -136,15 +166,7 @@
             function openModal(image) {
                 modal.style.display = 'flex';
                 modalImg.src = image.src;
-                
-                let modalCaption = document.querySelector('.modal-caption');
-                if (!modalCaption) {
-                    modalCaption = document.createElement('div');
-                    modalCaption.className = 'modal-caption';
-                    document.querySelector('.modal-content').appendChild(modalCaption);
-                }
-                modalCaption.textContent = image.caption || '';
-                
+            
                 document.body.style.overflow = 'hidden';
             }
 
