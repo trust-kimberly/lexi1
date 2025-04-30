@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <title>IV - Lexi Wimberly</title>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-left">
+      <a href="/">Lexi Wimberly</a>
+    </div>
+    <div class="nav-right">
+      <a href="info.html">Info</a>    
+    </div>
+  </nav>
+
+  <footer>
+    <div class="ft-left">
+      <a href="projects.html">Projects</a> 
+    </div>
+    <div class="ft-right">
+      <a href="thumbnails.html">Thumbnails</a>
+    </div>
+  </footer>
+
+
+    <div class="project-gallery">
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="media/160813_LasVegas_Chapel2.jpg" onclick="openModal(this)">
+        </div>
+        <div class="gallery-item">
+          <img src="media/161010_LasVegas_526-1.jpg" onclick="openModal(this)">
+        </div>
+        <div class="gallery-item">
+          <img src="media/161010_LasVegas_605.jpg" onclick="openModal(this)">
+        </div>
+        <div class="gallery-item">
+          <img src="media/160813_VegasProject_Chapel3362_01.jpg" onclick="openModal(this)">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="imageModal" class="modal">
+    <div class="modal-content">
+      <img id="modalImage" src="" alt="">
+    </div>
+  </div>
+
+  <script>
+    function openModal(img) {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImage');
+      modal.style.display = 'flex';
+      modalImg.src = img.src;
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Close modal when clicking outside the image
+    document.getElementById('imageModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        this.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        const modal = document.getElementById('imageModal');
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    });
+  </script>
+
+</body>
+</html> 
