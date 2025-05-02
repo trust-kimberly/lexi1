@@ -117,8 +117,9 @@ a:hover {
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 15px;
+  grid-template-rows: repeat(2, auto);
+  gap: 15px 15px;
+  row-gap: 50px;
   padding: 80px;
   margin: 0 auto;
   max-width: 1200px;
@@ -132,7 +133,6 @@ a:hover {
   align-items: center;
 }
 
-
 /* Carousel Styling for Grid (Thumbnails) */
 .projects-grid .card-carousel {
   width: 100%;
@@ -144,22 +144,47 @@ a:hover {
   max-height: 500px;
 }
 
+.projects-grid .carousel-inner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.projects-grid .carousel-inner > .item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .projects-grid .carousel-inner > .item > img {
   max-width: 500px;
   max-height: 500px;
   width: auto;
   height: auto;
   object-fit: contain;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} 
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+}
 
+/* Specific styles for Las Vegas project */
+.projects-grid .project-card:nth-child(3) .card-carousel {
+  max-height: 300px;
+  margin-bottom: 5px;
+}
+
+.projects-grid .project-card:nth-child(3) .carousel-inner > .item > img {
+  max-height: 300px;
+}
 
 /* Project Title Styling */
 .project-title-wrapper {
   padding: 10px 0;
   text-align: center;
+  width: 100%;
 }
 
 .project-title {
@@ -168,6 +193,11 @@ a:hover {
   margin: 0;
   padding: 0;
   color: black;
+  transition: color 0.2s ease;
+}
+
+.project-card a:hover .project-title {
+  color: #D4A3E8;
 }
 
 /* Gallery Page Styles */
@@ -221,24 +251,82 @@ a:hover {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, auto);
+    gap: 30px;
+    row-gap: 30px;
+    padding: 60px 20px;
+  }
+
+  .project-card {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .projects-grid .card-carousel {
+    min-height: 200px;
+    max-height: 300px;
+  }
+
+  .projects-grid .carousel-inner > .item > img {
+    max-width: 300px;
+    max-height: 300px;
+  }
+
+  .projects-grid .project-card:nth-child(3) .card-carousel {
+    max-height: 200px;
+    margin-bottom: 3px;
+  }
+
+  .projects-grid .project-card:nth-child(3) .carousel-inner > .item > img {
+    max-height: 200px;
+  }
+
   .project-gallery {
     max-width: 768px;
   }
   
   .project-gallery .gallery-grid {
     gap: 15px;
-    padding: 15px 0;
+    padding: 60px 15px;
   }
 }
 
 @media (max-width: 480px) {
+  .projects-grid {
+    gap: 20px;
+    row-gap: 20px;
+    padding: 60px 15px;
+  }
+
+  .projects-grid .card-carousel {
+    min-height: 180px;
+    max-height: 250px;
+  }
+
+  .projects-grid .carousel-inner > .item > img {
+    max-width: 250px;
+    max-height: 250px;
+  }
+
+  .projects-grid .project-card:nth-child(3) .card-carousel {
+    max-height: 150px;
+    margin-bottom: 2px;
+  }
+
+  .projects-grid .project-card:nth-child(3) .carousel-inner > .item > img {
+    max-height: 150px;
+  }
+
   .project-gallery {
     max-width: 400px;
   }
   
   .project-gallery .gallery-grid {
     gap: 12px;
-    padding: 10px 0;
+    padding: 60px 15px;
   }
 }
 
