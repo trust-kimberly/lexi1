@@ -3,7 +3,7 @@ const images = [
     { src: "media/220412_UrbanFarmsLA_0245.jpg", tags: ["landing", "living"],  active: true },
     { src: "media/250824_Hawaii_252.jpg", tags: ["landing", "living"] },
     { src: "media/250824_Hawaii_296.jpg", tags: ["landing", "living"] },
-    { src: "media/_R003251.jpg", tags: ["landing", "living"] },
+    { src: "media/R003251.jpg", tags: ["landing", "living"] },
     { src: "media/250520_SungHolly_0358.jpg", tags: ["landing", "portraits"] },
     { src: "media/250703_051.jpg", tags: ["landing", "living"] },
     { src: "media/221015_KaitCulmo_137_BW.jpeg", tags: ["landing", "portraits"] },
