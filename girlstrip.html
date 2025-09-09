@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <title>Las Vegas - Lexi Wimberly</title>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-left">
+      <a href="/">Lexi Wimberly</a>
+    </div>
+    <div class="nav-right">
+      <a href="info.html">Info</a>    
+    </div>
+  </nav>
+
+  <footer>
+    <div class="ft-left">
+      <a href="projects.html">Projects</a> 
+    </div>
+    <div class="ft-right">
+      <a href="thumbnails.html">Thumbnails</a>
+    </div>
+  </footer>
+
+
+    <div class="project-gallery">
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="media/Girls Trip/250724_021.jpg" onclick="openModal(this)">
+        </div>
+        <div class="gallery-item">
+          <img src="media/Girls Trip/250729_512.jpg" onclick="openModal(this)">
+        </div>
+        <div class="gallery-item">
+          <img src="media/Girls Trip/250727_220.jpg" onclick="openModal(this)">
+        </div>
+        <div class="gallery-item">
+          <img src="media/Girls Trip/250728_355.jpg" onclick="openModal(this)">
+        </div>
+        <div class="gallery-item">
+          <img src="media/Girls Trip/250727_304.jpg" onclick="openModal(this)">
+        </div>
+        <div class="gallery-item">
+          <img src="media/Girls Trip/250728_326.jpg" onclick="openModal(this)">
+        </div>
+        <div class="gallery-item">
+          <img src="media/Girls Trip/250727_162.jpg" onclick="openModal(this)">
+        </div>
+        <div class="gallery-item">
+          <img src="media/Girls Trip/250727_207.jpg" onclick="openModal(this)">
+        </div>
+        <div class="gallery-item">
+          <img src="media/Girls Trip/250729_557.jpg" onclick="openModal(this)">
+        </div>
+        <div class="gallery-item">
+          <img src="media/Girls Trip/250728_487.jpg" onclick="openModal(this)">
+        </div>
+        <div class="gallery-item">
+          <img src="media/Girls Trip/250728_430.jpg" onclick="openModal(this)">
+        </div>
+        <div class="gallery-item">
+          <img src="media/Girls Trip/250728_425.jpg" onclick="openModal(this)">
+        </div>
+        <div class="gallery-item">
+          <img src="media/Girls Trip/250731_710.jpg" onclick="openModal(this)">
+        </div>
+        <div class="gallery-item">
+          <img src="media/Girls Trip/250728_495.jpg" onclick="openModal(this)">
+        </div>
+        <div class="gallery-item">
+          <img src="media/Girls Trip/250728_459.jpg" onclick="openModal(this)">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="imageModal" class="modal">
+    <div class="modal-close" onclick="closeModal()">×</div>
+    <div class="modal-content">
+      <div class="modal-nav modal-nav-left" onclick="navigateImage(-1)"></div>
+      <img id="modalImage" src="" alt="">
+      <div class="modal-nav modal-nav-right" onclick="navigateImage(1)"></div>
+    </div>
+  </div>
+
+  <script>
+    let currentImageIndex = 0;
+    const images = Array.from(document.querySelectorAll('.gallery-item img'));
+
+    function openModal(img) {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImage');
+      currentImageIndex = images.indexOf(img);
+      modal.style.display = 'flex';
+      modalImg.src = img.src;
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('imageModal');
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    function navigateImage(direction) {
+      currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
+      const modalImg = document.getElementById('modalImage');
+      modalImg.src = images[currentImageIndex].src;
+    }
+
+    // Close modal when clicking outside the image
+    document.getElementById('imageModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeModal();
+      }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeModal();
+      } else if (e.key === 'ArrowLeft') {
+        navigateImage(-1);
+      } else if (e.key === 'ArrowRight') {
+        navigateImage(1);
+      }
+    });
+  </script>
+
+</body>
+</html> 
