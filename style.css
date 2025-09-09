@@ -170,16 +170,6 @@ a:hover {
   padding: 0;
 }
 
-/* Specific styles for Las Vegas project */
-.projects-grid .project-card:nth-child(3) .card-carousel {
-  max-height: 300px;
-  margin-bottom: 5px;
-}
-
-.projects-grid .project-card:nth-child(3) .carousel-inner > .item > img {
-  max-height: 300px;
-}
-
 /* Project Title Styling */
 .project-title-wrapper {
   padding: 10px 0;
@@ -244,7 +234,6 @@ a:hover {
   aspect-ratio: auto 4/5;
   display: block;
   object-fit: contain;
-
   margin: auto;
 }
 
@@ -275,15 +264,6 @@ a:hover {
     max-height: 300px;
   }
 
-  .projects-grid .project-card:nth-child(3) .card-carousel {
-    max-height: 200px;
-    margin-bottom: 3px;
-  }
-
-  .projects-grid .project-card:nth-child(3) .carousel-inner > .item > img {
-    max-height: 200px;
-  }
-
   .project-gallery {
     max-width: 768px;
   }
@@ -311,14 +291,6 @@ a:hover {
     max-height: 250px;
   }
 
-  .projects-grid .project-card:nth-child(3) .card-carousel {
-    max-height: 150px;
-    margin-bottom: 2px;
-  }
-
-  .projects-grid .project-card:nth-child(3) .carousel-inner > .item > img {
-    max-height: 150px;
-  }
 
   .project-gallery {
     max-width: 400px;
