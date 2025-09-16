@@ -61,7 +61,7 @@
             const tags = new Set();
             images.forEach(image => {
                 if (image.tags) {
-                    image.tags.forEach(tag => tag !== "landing" && tags.add(tag));
+                    image.tags.forEach(tag => tag !== "landing" && tag !== "all" && tags.add(tag));
                 }
             });
 
@@ -78,50 +78,39 @@
 
             const filterBtns = document.querySelectorAll('.filter-btn');
 
+            function shuffleArray(arr) {
+                for (let i = arr.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    const temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+                return arr;
+            }
+
             function displayImages(filter = 'all') {
                 // Clear existing images
                 grid.innerHTML = '';
                 
-                let imagesToShow = images.filter(image => {
-                    if (filter === 'all') return true;
-                    return image.tags && image.tags.includes(filter);
-                });
-
-                // Sort images based on filter
-                if (filter !== 'all') {
-                    // Create a custom sort order for specific tags
-                    const sortOrders = {
-                        'interiors/Exteriors': [
-                            "media/240528_TwoBunch_1350.jpg",
-                            "media/220718_Sequoia_204-1.jpeg",
-                            "media/240528_TwoBunch_089.jpg",
-                            
-                            // Add more image paths in your desired order
-                        ],
-                        'portrait': [
-                            "media/Lizzy2.jpeg",
-                            "media/221015_KaitCulmo_033.jpg",
-                            // Add more image paths in your desired order
-                        ],
-                        // Add more tags and their custom orders as needed
-                    };
-
-                    if (sortOrders[filter]) {
-                        imagesToShow.sort((a, b) => {
-                            const indexA = sortOrders[filter].indexOf(a.src);
-                            const indexB = sortOrders[filter].indexOf(b.src);
-                            
-                            // If both images are in the sort order, use that order
-                            if (indexA !== -1 && indexB !== -1) {
-                                return indexA - indexB;
-                            }
-                            // If only one image is in the sort order, prioritize it
-                            if (indexA !== -1) return -1;
-                            if (indexB !== -1) return 1;
-                            // For images not in the sort order, keep their original order
-                            return 0;
-                        });
-                    }
+                let imagesToShow;
+                if (filter === 'all') {
+                    // Aggregate images from selected categories and shuffle
+                    imagesToShow = images.filter(image => {
+                        return image.tags && (
+                            image.tags.includes('portraits') ||
+                            image.tags.includes('interiors') ||
+                            image.tags.includes('lifestyle')
+                        );
+                    });
+                    imagesToShow = shuffleArray(imagesToShow.slice());
+                } else {
+                    imagesToShow = images.filter(image => image.tags && image.tags.includes(filter));
+                    // Sort images by their filter-specific order property
+                    imagesToShow.sort((a, b) => {
+                        const orderA = (a.order && a.order[filter]) || 999; // Default to 999 if no order is specified for this filter
+                        const orderB = (b.order && b.order[filter]) || 999;
+                        return orderA - orderB;
+                    });
                 }
 
                 // Update URL with the current filter
