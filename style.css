@@ -270,6 +270,7 @@ a:hover {
   
   .project-gallery .gallery-grid {
     gap: 15px;
+    padding: 15px 0;
     padding: 60px 15px;
   }
 }
@@ -298,6 +299,7 @@ a:hover {
   
   .project-gallery .gallery-grid {
     gap: 12px;
+    padding: 10px 0;
     padding: 60px 15px;
   }
 }

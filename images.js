@@ -63,7 +63,7 @@ const images = [
     { src: "media/Trousdale.jpg", tags: ["portraits"], order: { portraits: 6 } },
     { src: "media/002.jpg", tags: ["portraits"], order: { portraits: 7 } },
     { src: "media/JulieHanse_238.jpg", tags: ["portraits"], order: { portraits: 8 } },
-    { src: "media/Portraits/20231007_Jack.jpg", tags: ["portraits"], order: { portraits: 9 } }, 
+    { src: "media/Jack_studio.jpg", tags: ["portraits"], order: { portraits: 9 } }, 
     { src: "media/221105_Zora_535.jpeg", tags: ["portraits"], order: { portraits: 10 } }, 
     
     // INTERIORS SECTION
@@ -94,11 +94,11 @@ const images = [
     { src: "media/Lifestyle/241231_041.jpg", tags: ["lifestyle"], order: {  lifestyle: 8 } },
     { src: "media/Girls Trip/250729_512.jpg", tags: ["lifestyle"], order: {  lifestyle: 9 } },
     { src: "media/Girls Trip/250728_326.jpg", tags: ["lifestyle"], order: {  lifestyle: 10 } },
-    { src: "media/250725_110.jpg", tags: ["lifestyle"], order: { lifestyle: 11 } },
+    { src: "media/Travel/019_KimLake.jpg", tags: ["lifestyle"], order: { lifestyle: 11 } },
     { src: "media/220412_UrbanFarmsLA_0049.jpg", tags: ["lifestyle"], order: { lifestyle: 12 } },
     { src: "media/Girls Trip/250727_220.jpg", tags: ["lifestyle"], order: { lifestyle: 13 } },
-    { src: "media/Girls Trip/250727_162.jpg", tags: ["lifestyle"], order: { lifestyle: 14 } },
-    { src: "media/R003251.jpg", tags: ["lifestyle"], order: { lifestyle: 15 } },
+    { src: "media/Travel/MG_2774.jpg", tags: ["lifestyle"], order: { lifestyle: 14 } },
+    { src: "media/Girls Trip/250727_162.jpg", tags: ["lifestyle"], order: { lifestyle: 15 } },
 
     // ALL GALLERY SECTION - Dedicated tag with its own order system
     { src: "media/250520_SungHolly_0358.jpg", tags: ["all"], order: { all: 1 } },
