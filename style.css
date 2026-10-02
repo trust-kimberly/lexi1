@@ -126,7 +126,7 @@ a:hover {
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, auto);
+  grid-template-rows: repeat(3, auto);
   gap: 15px 15px;
   row-gap: 50px;
   padding: 80px;
